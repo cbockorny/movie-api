@@ -15,7 +15,7 @@ public interface MovieProducerRepository extends JpaRepository<MovieProducer, Lo
     @Query(value="SELECT mp "
             + "FROM MovieProducer mp "
             + "JOIN Movie m ON (m.id = mp.movie.id)"
-//            + "WHERE m.winner = true "
+            + "WHERE m.winner = true "
             )
     List<MovieProducer> findWinnerMovies();
 }

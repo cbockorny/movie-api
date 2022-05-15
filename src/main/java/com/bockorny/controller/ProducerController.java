@@ -37,8 +37,11 @@ public class ProducerController {
 
     @GetMapping("/winner")
     public ResponseEntity<ProducerMinMaxDTO> getWinners() {
-        final ProducerMinMaxDTO producers = producerService.findMinMaxWinner();
-        final HttpStatus status = producers == null ? HttpStatus.NO_CONTENT : HttpStatus.OK;
-        return new ResponseEntity<>(producers, status);
+        final ProducerMinMaxDTO producer = producerService.findMinMaxWinner();
+        final HttpStatus status = producer == null ? HttpStatus.NO_CONTENT : HttpStatus.OK;
+        if (producer == null){
+            return new ResponseEntity<>(status);
+        }
+        return new ResponseEntity<>(producer, status);
     }
 }
