@@ -2,7 +2,8 @@ movi-api
 Desenvolvida API RESTful para possibilitar a leitura da lista de indicados e vencedores da categoria Pior Filme do Golden Raspberry Awards.
 
 Como usar
-Para execução do projeto, é necessário instalação do Java17.
+Para execução do projeto, é necessário instalação do Java17 e clonar o projeto: https://github.com/cbockorny/movie-api.
+
 
 Endpoints desenvolvidos
 /movie-api/movie/all -> Para listar todos filmes inseridos
