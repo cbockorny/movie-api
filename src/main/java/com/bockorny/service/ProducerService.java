@@ -56,12 +56,15 @@ public class ProducerService {
                 final List<MovieProducer> movies = entry.getValue();
                 if (movies.size() > 1) {
                     final List<Integer> years = movies.stream().map(i -> i.getMovie().getYear()).sorted().toList();
-                    final int firstYear = years.get(0);
-                    final int lastYear = years.get(years.size() - 1);
-                    final int diff = lastYear - firstYear;
 
-                    mapInterval.putIfAbsent(diff, new ArrayList<>());
-                    mapInterval.get(diff).add(new ProducerIntervalDTO(producer, diff, firstYear, lastYear));
+                    for (int i = 0; i < years.size()-1; i++) {
+                        final int firstYear = years.get(i);
+                        final int secondYear = years.get(i+1);
+                        final int diff = secondYear - firstYear;
+
+                        mapInterval.putIfAbsent(diff, new ArrayList<>());
+                        mapInterval.get(diff).add(new ProducerIntervalDTO(producer, diff, firstYear, secondYear));
+                    }
                 }
             }
 
